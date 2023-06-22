@@ -1,10 +1,13 @@
-	# Set broader user limits
+# Enable the user holberton to login and open files without error.
 
-exec { 'ULIMIT Soft':
-    path    => '/usr/bin',
-    command => 'sudo sed -i "s/holberton soft nofile 4/holberton hard nofile 1048576/g" /etc/security/limits.conf'
+# Increase hard file limit for Holberton user.
+exec { 'increase-hard-file-limit-for-holberton-user':
+  command => 'sed -i "/holberton hard/s/5/50000/" /etc/security/limits.conf',
+  path    => '/usr/local/bin/:/bin/'
 }
-exec { 'ULIMIT Hard':
-    path    => '/usr/bin',
-    command => 'sudo sed -i "s/holberton hard nofile 5/holberton hard nofile 1048576/g" /etc/security/limits.conf'
+
+# Increase soft file limit for Holberton user.
+exec { 'increase-soft-file-limit-for-holberton-user':
+  command => 'sed -i "/holberton soft/s/4/50000/" /etc/security/limits.conf',
+  path    => '/usr/local/bin/:/bin/'
 }

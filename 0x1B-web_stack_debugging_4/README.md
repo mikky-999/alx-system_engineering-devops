@@ -1,1 +1,3 @@
-# Web stack debugging #4
+/**
+ * This folder contains puppet manifests that debug a web server
+ * /
